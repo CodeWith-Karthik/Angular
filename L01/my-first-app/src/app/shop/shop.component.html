@@ -1,1 +1,6 @@
-<p>shop works!</p>
+<p
+  [ngStyle]="{ color: getColor() }"
+  [ngClass]="{ Opened: status === 'Opened' }"
+>
+  shop no {{ id }} is {{ status }}
+</p>

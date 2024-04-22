@@ -1,2 +1,23 @@
-<h1>Brookefields Shopping Mall</h1>
-<app-shop></app-shop>
+<h1>{{shoppingMallName}}</h1>
+<!-- <input type="text" (input)="onUpdateShopName($event)" /> -->
+<input type="text" [(ngModel)]="shopName" class="form-control" />
+<!-- <p>{{shopName}}</p> -->
+<button
+  [disabled]="isButtonActive"
+  (click)="onCreateShop()"
+  class="btn btn-danger"
+>
+  Add Shop
+</button>
+<!-- <p>{{isButtonActive}}</p> -->
+<!-- <p>{{createNewShop}}</p> -->
+
+<p *ngIf="isShopCreated;else noShop">
+  Shop was created, shop name is {{shopName}}
+</p>
+
+<ng-template #noShop>
+  <p>No shop was created</p>
+</ng-template>
+
+<app-shop *ngFor="let shop of shops"></app-shop>
