@@ -1,0 +1,62 @@
+<h1 class="text-center m-5">Directives</h1>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <button class="btn btn-dark" (click)="onToggle()">
+        {{ !isSuperCars ? 'Switch to Super Cars' : 'Switch to Normal Cars' }}
+      </button>
+      <hr />
+      <p class="h3">
+        {{ isSuperCars ? 'List of Super Cars' : 'List of Normal Cars' }}
+      </p>
+      <ul class="list-group" *ngIf="isSuperCars">
+        <li
+          class="list-group-item"
+          *ngFor="let car of superCars"
+          [ngClass]="car === 'GTR r35' ? 's1' : 's2'"
+          [ngStyle]="{ backgroundColor: car === 'Supra' ? 'coral' : 'black' }"
+        >
+          {{ car }}
+        </li>
+      </ul>
+      <ul class="list-group" *appConditionFailed="isSuperCars">
+        <li
+          class="list-group-item"
+          *ngFor="let car of cars"
+          [ngStyle]="{ backgroundColor: 'green', color: 'white' }"
+        >
+          {{ car }}
+        </li>
+      </ul>
+      <!-- <ng-template #normalCar>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let car of cars"
+            [ngStyle]="{ backgroundColor: 'green', color: 'white' }"
+          >
+            {{ car }}
+          </li>
+        </ul>
+      </ng-template> -->
+    </div>
+
+    <hr />
+    <div class="col-md-12 mb-3">
+      <p bsCard>See here, Am your custom basic attribute directive</p>
+      <p adCard [defaultColor]="'orange'" [adColor]="'red'">
+        See here, Am your custom advance attribute directive
+      </p>
+    </div>
+
+    <div class="col-md-12">
+      <div [ngSwitch]="condition">
+        <div *ngSwitchCase="10">The Value is 10</div>
+        <div *ngSwitchCase="20">The Value is 20</div>
+        <div *ngSwitchCase="30">The Value is 30</div>
+        <div *ngSwitchDefault>The value is unknown</div>
+      </div>
+    </div>
+  </div>
+</div>
