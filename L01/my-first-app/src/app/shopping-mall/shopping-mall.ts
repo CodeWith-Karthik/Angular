@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   //Element
@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
   //Css Class
   //selector: '.app-shopping-mall',
   templateUrl: './shopping-mall.html',
+  //template: `<app-shop></app-shop>`,
   styleUrl: './shopping-mall.css',
+  encapsulation: ViewEncapsulation.Emulated,
 })
 export class ShoppingMall {
   shoppingMallName: string = 'Shopping Mall';
