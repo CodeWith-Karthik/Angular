@@ -19,8 +19,4 @@ export class AppComponent {
   onProductAdd(product: IProduct) {
     this.productList.push(product);
   }
-
-  onDeleteProduct() {
-    this.productList.splice(0, 1);
-  }
 }

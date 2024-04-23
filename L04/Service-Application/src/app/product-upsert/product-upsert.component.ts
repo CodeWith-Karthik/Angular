@@ -17,21 +17,8 @@ export class ProductUpsertComponent {
 
   @Output() addProduct = new EventEmitter<IProduct>();
 
-  @ViewChild('priceVC', { static: true }) price: ElementRef;
-
-  onSubmit(productName: HTMLInputElement) {
+  onSubmit() {
     console.log(this.product);
-
-    //Local Reference way 1
-    console.log(productName);
-    console.log('Local Reference 1 ' + productName.value);
-    this.product.name = productName.value;
-
-    //Local Reference way 2
-    console.log(this.price.nativeElement);
-    console.log('Local Refernce 2 ' + this.price.nativeElement.value);
-
-    this.product.price = this.price.nativeElement.value;
 
     this.addProduct.emit(this.product);
 

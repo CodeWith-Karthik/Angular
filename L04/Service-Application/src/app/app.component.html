@@ -2,23 +2,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-3" *ngFor="let product of productList">
-      <app-product [product-ip]="product">
-        <button class="btn btn-danger mb-2" (click)="onDeleteProduct()">
-          Delete
-        </button>
-        <div class="card shadow-lg">
-          <div class="card-header">{{ product.name }}</div>
-          <img
-            [src]="product.imageUrl"
-            alt="img"
-            class="img-card-top"
-            style="height: 220px"
-          />
-          <div class="card-footer text-muted text-center">
-            ${{ product.price }}
-          </div>
-        </div>
-      </app-product>
+      <app-product [product-ip]="product"> </app-product>
     </div>
   </div>
 </div>
