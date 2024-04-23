@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { ProductUpsertComponent } from './product-upsert/product-upsert.component';
 import { ProductComponent } from './product/product.component';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from './_services/product.service';
 
 @NgModule({
   declarations: [AppComponent, ProductUpsertComponent, ProductComponent],
   imports: [BrowserModule, FormsModule],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
