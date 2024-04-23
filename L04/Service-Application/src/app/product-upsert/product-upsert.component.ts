@@ -20,4 +20,12 @@ export class ProductUpsertComponent {
 
     this.product = { name: '', price: '', imageUrl: '' };
   }
+
+  onShow() {
+    this.productService.isDisplayComponent.next(true);
+  }
+
+  onHide() {
+    this.productService.isDisplayComponent.next(false);
+  }
 }

@@ -1,5 +1,9 @@
+import { EventEmitter, Injectable } from '@angular/core';
 import { IProduct } from '../_models/product.model';
+import { LoggerService } from './logger.service';
+import { Subject } from 'rxjs';
 
+@Injectable()
 export class ProductService {
   productList: IProduct[] = [
     {
@@ -10,11 +14,17 @@ export class ProductService {
     },
   ];
 
+  isDisplayComponent = new Subject<boolean>();
+
+  constructor(private logger: LoggerService) {}
+
   getProducts(): IProduct[] {
+    this.logger.logInformation('Products List Fetched');
     return this.productList;
   }
 
   addProduct(product: IProduct): void {
     this.productList.push(product);
+    this.logger.logInformation('Product Added');
   }
 }
