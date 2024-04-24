@@ -21,6 +21,14 @@ const appRoutes: Routes = [
     path: 'product-upsert',
     component: ProductUpsertComponent,
   },
+  {
+    path: 'product-upsert/:id',
+    component: ProductUpsertComponent,
+  },
+  {
+    path: 'product/:id',
+    component: ProductComponent,
+  },
 ];
 
 @NgModule({

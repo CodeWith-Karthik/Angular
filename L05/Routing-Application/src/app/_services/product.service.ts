@@ -91,4 +91,17 @@ export class ProductService {
     this.productsList.push(product);
     this.logger.logInformation('Product Added');
   }
+
+  getProductById(id: string): IProduct {
+    return this.productsList.find((x) => x.id === id);
+  }
+
+  updateProduct(updateProduct: IProduct): void {
+    const index = this.productsList.findIndex(
+      (product) => product.id === updateProduct.id
+    );
+
+    this.productsList[index] = updateProduct;
+    this.logger.logInformation('Product updated successfully');
+  }
 }

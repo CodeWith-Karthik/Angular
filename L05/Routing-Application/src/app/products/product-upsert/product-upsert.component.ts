@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduct } from '../../_models/product.model';
 import { ProductService } from '../../_services/product.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-upsert',
@@ -8,6 +9,8 @@ import { ProductService } from '../../_services/product.service';
   styleUrl: './product-upsert.component.css',
 })
 export class ProductUpsertComponent {
+  id: string = '';
+  isEditMode: boolean = false;
   product: IProduct = {
     id: '',
     name: '',
@@ -17,20 +20,59 @@ export class ProductUpsertComponent {
     manufacturedYear: '',
   };
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    //console.log(this.route.snapshot.params);
+    // console.log(this.route.snapshot.queryParams);
+    // console.log(this.route.snapshot.fragment);
+
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+    });
+
+    // this.route.queryParams.subscribe((x) => {
+    //   console.log(x);
+    // });
+
+    // this.route.fragment.subscribe((x) => {
+    //   console.log(x);
+    // });
+
+    if (this.id) {
+      this.product = this.productService.getProductById(this.id);
+      this.isEditMode = true;
+    }
+  }
 
   onSubmit() {
-    console.log(this.product);
+    if (!this.isEditMode) {
+      this.product.id = Math.random().toString();
+      this.productService.addProduct(this.product);
+      this.product = {
+        id: '',
+        name: '',
+        brand: '',
+        price: '',
+        imageUrl: '',
+        manufacturedYear: '',
+      };
+      this.router.navigateByUrl('/');
+    } else {
+      this.productService.updateProduct(this.product);
+      this.router.navigateByUrl(`/product/${this.product.id}`);
+    }
+  }
 
-    this.productService.addProduct(this.product);
-
-    this.product = {
-      id: '',
-      name: '',
-      brand: '',
-      price: '',
-      imageUrl: '',
-      manufacturedYear: '',
-    };
+  onBack() {
+    if (this.isEditMode) {
+      this.router.navigateByUrl(`/product/${this.product.id}`);
+    } else {
+      this.router.navigateByUrl('/');
+    }
   }
 }

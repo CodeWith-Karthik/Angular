@@ -1,10 +1,14 @@
 <div class="container mt-3 border p-3 bg-dark text-light">
-  <p class="h3">Product Upsert</p>
+  <p class="h3">{{ isEditMode ? 'Edit' : 'Create' }} Product</p>
   <div class="row">
     <div class="col-md-12">
       <div class="mb-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" [(ngModel)]="product.name" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Brand</label>
+        <input type="text" class="form-control" [(ngModel)]="product.brand" />
       </div>
       <div class="mb-3">
         <label class="form-label">Price</label>
@@ -19,7 +23,29 @@
         />
       </div>
       <div class="mb-3">
-        <button class="btn btn-success me-2" (click)="onSubmit()">Add</button>
+        <label class="form-label">Manufactured Year</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.manufacturedYear"
+        />
+      </div>
+      <div class="mb-3">
+        <button
+          class="btn btn-success me-2"
+          (click)="onSubmit()"
+          *ngIf="!isEditMode"
+        >
+          Add
+        </button>
+        <button
+          class="btn btn-warning me-2"
+          (click)="onSubmit()"
+          *ngIf="isEditMode"
+        >
+          Update
+        </button>
+        <button class="btn btn-danger me-2" (click)="onBack()">Back</button>
       </div>
     </div>
   </div>
