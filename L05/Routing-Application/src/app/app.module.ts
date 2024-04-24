@@ -11,6 +11,7 @@ import { ProductCardComponent } from './products/product-card/product-card.compo
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,14 @@ const appRoutes: Routes = [
     path: 'product/:id',
     component: ProductComponent,
   },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+  },
 ];
 
 @NgModule({
@@ -40,6 +49,7 @@ const appRoutes: Routes = [
     ProductCardComponent,
     HomeComponent,
     NavbarComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ProductService],
