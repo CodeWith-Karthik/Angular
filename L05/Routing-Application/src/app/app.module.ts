@@ -8,6 +8,20 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './_services/product.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'product-upsert',
+    component: ProductUpsertComponent,
+  },
+];
 
 @NgModule({
   declarations: [
@@ -16,8 +30,10 @@ import { ProductCardComponent } from './products/product-card/product-card.compo
     ProductComponent,
     ProductsComponent,
     ProductCardComponent,
+    HomeComponent,
+    NavbarComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })
