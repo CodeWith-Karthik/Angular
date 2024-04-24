@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeroComponent } from './hero/hero.component';
+import { CardStyleDirective } from './_directives/card-style.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeroComponent } from './hero/hero.component';
     NavbarComponent,
     NotFoundComponent,
     HeroComponent,
+    CardStyleDirective,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ProductService],
