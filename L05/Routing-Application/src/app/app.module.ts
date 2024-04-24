@@ -9,36 +9,10 @@ import { ProductService } from './_services/product.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'product-upsert',
-    component: ProductUpsertComponent,
-  },
-  {
-    path: 'product-upsert/:id',
-    component: ProductUpsertComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductComponent,
-  },
-  {
-    path: 'not-found',
-    component: NotFoundComponent,
-  },
-  {
-    path: '**',
-    redirectTo: 'not-found',
-  },
-];
+import { AppRoutingModule } from './app-routing.module';
+import { HeroComponent } from './hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +24,9 @@ const appRoutes: Routes = [
     HomeComponent,
     NavbarComponent,
     NotFoundComponent,
+    HeroComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })
