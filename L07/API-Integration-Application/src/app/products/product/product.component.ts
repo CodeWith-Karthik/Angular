@@ -24,7 +24,11 @@ export class ProductComponent {
     });
 
     if (this.id) {
-      this.product = this.productService.getProductById(this.id);
+      this.productService
+        .getProductById(this.id)
+        .subscribe((responseData: IProduct) => {
+          this.product = responseData;
+        });
       console.log(this.product);
     }
   }
@@ -39,5 +43,11 @@ export class ProductComponent {
 
   onRefresh() {
     this.router.navigate(['product', this.id], { relativeTo: this.route });
+  }
+
+  onDelete() {
+    this.productService.deleteProduct(this.id).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

@@ -49,9 +49,13 @@ export class ProductUpsertComponent {
     this.initForm();
 
     if (this.id) {
-      this.product = this.productService.getProductById(this.id);
-      this.isEditMode = true;
-      this.popluateForm();
+      this.productService
+        .getProductById(this.id)
+        .subscribe((product: IProduct) => {
+          this.product = product;
+          this.isEditMode = true;
+          this.popluateForm();
+        });
     }
   }
 
@@ -93,8 +97,9 @@ export class ProductUpsertComponent {
       });
     } else {
       this.product.id = this.id;
-      this.productService.updateProduct(this.product);
-      this.router.navigateByUrl(`/product/${this.product.id}`);
+      this.productService.updateProduct(this.product).subscribe(() => {
+        this.router.navigateByUrl(`/product/${this.product.id}`);
+      });
     }
 
     this.form.reset();
