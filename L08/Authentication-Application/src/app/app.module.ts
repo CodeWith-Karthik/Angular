@@ -15,7 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroComponent } from './hero/hero.component';
 import { CardStyleDirective } from './_directives/card-style.directive';
 import { UserAuthComponent } from './user-auth/user-auth.component';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
+import { authInterceptor } from './_interceptor/auth.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,8 +43,15 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      positionClass: 'toast-bottom-right',
+    }),
   ],
-  providers: [ProductService],
+  providers: [
+    ProductService,
+    provideHttpClient(withInterceptors([authInterceptor])),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
