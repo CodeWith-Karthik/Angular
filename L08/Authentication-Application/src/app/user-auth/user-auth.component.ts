@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IUser } from '../_models/user.model';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-user-auth',
@@ -17,6 +18,8 @@ export class UserAuthComponent {
     this.isRegisterMode = !this.isRegisterMode;
   }
 
+  constructor(private authService: AuthService) {}
+
   // onSubmit(form: NgForm) {
   //   this.user.emailAddress = form.value.emailAddress;
   //   this.user.password = form.value.userPassword;
@@ -26,6 +29,11 @@ export class UserAuthComponent {
   onSubmit() {
     this.user.emailAddress = this.authForm.value.emailAddress;
     this.user.password = this.authForm.value.userPassword;
-    console.log(this.user);
+
+    if (this.isRegisterMode) {
+      this.authService.register(this.user);
+    } else {
+      this.authService.login(this.user);
+    }
   }
 }
