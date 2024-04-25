@@ -22,6 +22,7 @@ import {
 } from '@angular/common/http';
 import { authInterceptor } from './_interceptor/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { errorInterceptor } from './_interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     ProductService,
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
   ],
   bootstrap: [AppComponent],
 })
