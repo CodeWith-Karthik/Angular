@@ -36,4 +36,8 @@ export class ProductComponent {
   onBack() {
     this.router.navigate(['/']);
   }
+
+  onRefresh() {
+    this.router.navigate(['product', this.id], { relativeTo: this.route });
+  }
 }
