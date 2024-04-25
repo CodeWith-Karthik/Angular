@@ -5,6 +5,7 @@ import { ProductUpsertComponent } from './products/product-upsert/product-upsert
 import { ProductComponent } from './products/product/product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { authGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   {
     path: 'product/:id',
     component: ProductComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'not-found',
