@@ -1,0 +1,8 @@
+.bg-form {
+  background-color: rgb(246, 248, 250);
+  border: 1px solid black;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
