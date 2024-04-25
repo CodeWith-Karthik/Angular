@@ -1,0 +1,52 @@
+<div class="container mt-3 border p-3 shadow">
+  <p class="h3">{{ isEditMode ? 'Edit' : 'Create' }} Product</p>
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+          <span
+            *ngIf="!form.get('name').valid && form.get('name').touched"
+            class="text-danger"
+            >Name is Required</span
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Brand</label>
+          <input type="text" class="form-control" formControlName="brand" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input type="text" class="form-control" formControlName="price" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Image URL</label>
+          <input type="text" class="form-control" formControlName="imageUrl" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Manufactured Year</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="manufacturedYear"
+          />
+        </div>
+        <div class="mb-3">
+          <button
+            class="btn btn-success me-2"
+            *ngIf="!isEditMode"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            Add
+          </button>
+          <button class="btn btn-warning me-2" *ngIf="isEditMode" type="submit">
+            Update
+          </button>
+          <button class="btn btn-danger me-2" (click)="onBack()">Back</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
