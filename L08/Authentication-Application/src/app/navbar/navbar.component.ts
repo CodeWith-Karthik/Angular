@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { ICurrentUser } from '../_models/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,11 @@ export class NavbarComponent {
   user: ICurrentUser;
   userSub: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.userSub = this.authService.currentUser$.subscribe(
@@ -25,6 +30,7 @@ export class NavbarComponent {
 
   onLogout() {
     this.authService.logout();
+    this.toastr.warning('Logged Out Successfully');
     this.router.navigateByUrl('/');
   }
 
