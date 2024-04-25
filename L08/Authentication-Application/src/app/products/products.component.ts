@@ -10,12 +10,14 @@ import { ProductService } from '../_services/product.service';
 export class ProductsComponent {
   products: IProduct[] = [];
   visibility: boolean = true;
+  isLoading: boolean = true;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.getProducts().subscribe((responseData) => {
       this.products = responseData;
+      this.isLoading = false;
     });
   }
 }

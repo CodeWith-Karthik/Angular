@@ -23,6 +23,8 @@ import {
 import { authInterceptor } from './_interceptor/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { errorInterceptor } from './_interceptor/error.interceptor';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { errorInterceptor } from './_interceptor/error.interceptor';
     HeroComponent,
     CardStyleDirective,
     UserAuthComponent,
+    SpinnerComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

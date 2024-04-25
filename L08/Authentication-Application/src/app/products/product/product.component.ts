@@ -11,6 +11,7 @@ import { ProductService } from '../../_services/product.service';
 export class ProductComponent {
   product: IProduct;
   id: string = '';
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class ProductComponent {
         .getProductById(this.id)
         .subscribe((responseData: IProduct) => {
           this.product = responseData;
+          this.isLoading = false;
         });
       console.log(this.product);
     }
