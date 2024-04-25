@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductUpsertComponent } from './products/product-upsert/product-upsert.component';
 import { ProductComponent } from './products/product/product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from './_services/product.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
@@ -30,7 +30,7 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     CardStyleDirective,
     UserAuthComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })
