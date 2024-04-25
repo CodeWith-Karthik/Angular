@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroComponent } from './hero/hero.component';
 import { CardStyleDirective } from './_directives/card-style.directive';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,13 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     CardStyleDirective,
     UserAuthComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })

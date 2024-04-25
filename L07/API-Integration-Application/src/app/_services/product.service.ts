@@ -2,6 +2,10 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { IProduct } from '../_models/product.model';
 import { LoggerService } from './logger.service';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+const BASE_URL =
+  'https://angular-1ec0f-default-rtdb.firebaseio.com/product.json';
 
 @Injectable()
 export class ProductService {
@@ -80,16 +84,23 @@ export class ProductService {
     },
   ];
 
-  constructor(private logger: LoggerService) {}
+  constructor(private http: HttpClient, private logger: LoggerService) {}
 
   getProducts(): IProduct[] {
     this.logger.logInformation('Products List Fetched');
     return this.productsList;
   }
 
-  addProduct(product: IProduct): void {
-    this.productsList.push(product);
-    this.logger.logInformation('Product Added');
+  addProduct(product: IProduct) {
+    const customProduct = {
+      name: product.name,
+      brand: product.brand,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      manufacturedYear: product.manufacturedYear,
+    };
+
+    return this.http.post(BASE_URL, customProduct);
   }
 
   getProductById(id: string): IProduct {

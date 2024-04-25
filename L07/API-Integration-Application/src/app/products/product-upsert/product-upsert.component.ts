@@ -88,9 +88,9 @@ export class ProductUpsertComponent {
 
     if (!this.isEditMode) {
       this.product.id = Math.random().toString();
-      this.productService.addProduct(this.product);
-
-      this.router.navigateByUrl('/');
+      this.productService.addProduct(this.product).subscribe(() => {
+        this.router.navigateByUrl('/');
+      });
     } else {
       this.product.id = this.id;
       this.productService.updateProduct(this.product);
