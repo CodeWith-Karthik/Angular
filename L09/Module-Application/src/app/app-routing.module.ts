@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductUpsertComponent } from './products/product-upsert/product-upsert.component';
-import { ProductComponent } from './products/product/product.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { UserAuthComponent } from './user-auth/user-auth.component';
-import { authGuard } from './_guards/auth.guard';
+import { HomeComponent } from './core/home/home.component';
+import { UserAuthComponent } from './user/user-auth/user-auth.component';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { ProductRoutingModule } from './products/product-routing.module';
 
 const appRoutes: Routes = [
   {
@@ -16,19 +14,7 @@ const appRoutes: Routes = [
     path: 'user-auth',
     component: UserAuthComponent,
   },
-  {
-    path: 'product-upsert',
-    component: ProductUpsertComponent,
-  },
-  {
-    path: 'product-upsert/:id',
-    component: ProductUpsertComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductComponent,
-    canActivate: [authGuard],
-  },
+
   {
     path: 'not-found',
     component: NotFoundComponent,
@@ -40,7 +26,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes), ProductRoutingModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

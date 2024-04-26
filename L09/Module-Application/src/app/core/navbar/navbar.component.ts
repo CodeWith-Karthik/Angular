@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
-import { ICurrentUser } from '../_models/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ICurrentUser } from '../../_models/user.model';
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-navbar',
