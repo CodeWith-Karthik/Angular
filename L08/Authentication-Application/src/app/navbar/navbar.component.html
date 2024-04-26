@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -17,11 +17,13 @@
           <a class="nav-link" aria-current="page" routerLink="/">Home</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/product-upsert">Product Upsert</a>
+          <a class="nav-link" routerLink="/product-upsert">Add Product</a>
         </li>
       </ul>
       <div class="d-flex justify-content-center align-items-center">
-        <div class="me-2">{{ user?.email }}</div>
+        <div class="me-2 text-light">
+          {{ user?.email?.split('@')[0] | uppercase }}
+        </div>
         <a
           class="btn btn-success"
           type="button"

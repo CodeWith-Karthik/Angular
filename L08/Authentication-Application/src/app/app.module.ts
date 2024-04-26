@@ -25,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { errorInterceptor } from './_interceptor/error.interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MainComponent } from './main/main.component';
     UserAuthComponent,
     SpinnerComponent,
     MainComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
