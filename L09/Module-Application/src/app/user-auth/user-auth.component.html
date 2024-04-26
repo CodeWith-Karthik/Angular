@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <div class="row justify-content-center align-items-center g-2">
+    <div class="col-md-4 rounded shadow p-5 bg-form">
+      <p class="h3 text-center">{{ isRegisterMode ? 'Register' : 'Login' }}</p>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="mb-3 mt-5">
+          <label class="form-label">Email Address</label>
+          <input
+            type="text"
+            class="form-control"
+            ngModel
+            name="emailAddress"
+            required
+            email
+            #emailInput="ngModel"
+          />
+          <span
+            *ngIf="emailInput.invalid && emailInput.touched"
+            class="text-danger"
+            >Email address is required</span
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            ngModel
+            name="userPassword"
+            required
+            #passwordInput="ngModel"
+          />
+          <span
+            *ngIf="passwordInput.invalid && passwordInput.touched"
+            class="text-danger"
+            >Password is required</span
+          >
+        </div>
+        <div class="mb-3 text-center">
+          <button
+            class="btn btn-primary me-2"
+            style="width: 100%"
+            [disabled]="!f.valid"
+          >
+            {{ isRegisterMode ? 'Register' : 'Login' }}
+          </button>
+        </div>
+      </form>
+      <button
+        class="btn btn-success me-2"
+        (click)="registerToggle()"
+        style="width: 100%"
+      >
+        {{ !isRegisterMode ? 'Register' : 'Login' }}
+      </button>
+    </div>
+  </div>
+</div>
